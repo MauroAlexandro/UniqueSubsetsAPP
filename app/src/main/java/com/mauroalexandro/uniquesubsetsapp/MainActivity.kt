@@ -23,17 +23,43 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    getAllUniqueSubSets()
                 }
             }
         }
+
+    }
+
+    @Composable
+    private fun getAllUniqueSubSets() {
+        integerSet = IntegerSet.getInstance()
+
+        //Create and Array of Integers - Set
+        val integerSetArray: MutableList<Int> = ArrayList()
+        integerSetArray.add(1)
+        integerSetArray.add(2)
+        integerSetArray.add(3)
+
+        //Call to the getUniqueSubset Function in order to retrieve all unique subsets
+        val allUniqueSubSets = integerSet.getUniqueSubset(integerSetArray)
+        var uniqueSubSetList = ""
+        for (i in allUniqueSubSets.indices) {
+            val integerSubSet = allUniqueSubSets[i]
+            var subSetGroup = ""
+
+            for (j in integerSubSet.indices) {
+                subSetGroup += integerSubSet[j].toString()+" "
+            }
+            uniqueSubSetList += subSetGroup+"\r\n"
+        }
+        SubSetList(uniqueSubSetList)
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun SubSetList(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = name,
         modifier = modifier
     )
 }
@@ -42,6 +68,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     UniqueSubsetsAPPTheme {
-        Greeting("Android")
+        SubSetList("Android")
     }
 }
