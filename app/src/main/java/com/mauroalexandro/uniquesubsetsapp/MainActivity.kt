@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    getAllUniqueSubSets()
+                    GetAllUniqueSubSets()
                 }
             }
         }
@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun getAllUniqueSubSets() {
+    private fun GetAllUniqueSubSets() {
         integerSet = IntegerSet.getInstance()
 
         //Create and Array of Integers - Set
